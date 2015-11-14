@@ -8,12 +8,15 @@ namespace SyncIt.Infrastructure
 {
     public class ExeRunner
     {
-        private Process _bashProcess;
+        private bool _isRunning;
+        private Process _process;
         private Queue<string> _responseQueue;
         private ManualResetEvent _responseEvent;
 
         private readonly Action<string> _onError;
         private readonly Action<string> _onSuccess;
+
+        public bool IsRunning { get { return _isRunning; } }
 
         public ExeRunner(Action<string> onSuccess, Action<string> onError)
         {
@@ -41,8 +44,9 @@ namespace SyncIt.Infrastructure
                 fileName = command;
             }
 
-            _bashProcess = new Process
+            _process = new Process
             {
+                EnableRaisingEvents = true,
                 StartInfo = new ProcessStartInfo(fileName)
                 {
                     Arguments = arguments,
@@ -55,34 +59,37 @@ namespace SyncIt.Infrastructure
                 }
             };
 
-            _bashProcess.Start();
+            _process.Start();
 
-            var errorEventHandler = new DataReceivedEventHandler(ErrorDataReceived);
-            var outEventHandler = new DataReceivedEventHandler(OutDataReceived);
-            _bashProcess.OutputDataReceived += outEventHandler;
-            _bashProcess.ErrorDataReceived += errorEventHandler;
+            _process.OutputDataReceived += OutDataReceived;
+            _process.ErrorDataReceived += ErrorDataReceived;
+            _process.Exited += (sender, args) => { _isRunning = false; };
 
-            _bashProcess.BeginErrorReadLine();
-            _bashProcess.BeginOutputReadLine();
+            _process.BeginErrorReadLine();
+            _process.BeginOutputReadLine();
 
-            return _bashProcess.Id;
+            _isRunning = true;
+
+            return _process.Id;
         }
 
         public void Stop()
         {
-            _bashProcess.StandardInput.Close();
-            _bashProcess.Close();
+            _process.StandardInput.Close();
+            _process.Close();
+
+            _isRunning = false;
         }
 
         public void WaitForExit(int milliseconds = 0)
         {
             if (milliseconds == 0)
             {
-                _bashProcess.WaitForExit();
+                _process.WaitForExit();
             }
             else
             {
-                _bashProcess.WaitForExit(milliseconds);
+                _process.WaitForExit(milliseconds);
             }
         }
 

@@ -10,12 +10,12 @@ namespace SyncIt.Daemon
 {
     public class SyncDaemon
     {
-        public const string StartMessage = "syncd has started watching current directory";
-        public const string StopMessage = "syncd has stopped watching current directory";
-        public const string SynchronizationFinishedMessage = "syncd has finished synchronization of files";
+        private bool _synchronize = false;
+        private const string StartMessage = "syncd has started watching current directory";
+        private const string StopMessage = "syncd has stopped watching current directory";
+        private const string SynchronizationFinishedMessage = "syncd has finished synchronization of files";
 
         private FileStream _locker;
-
         private Settings _settings;
         private readonly ExeRunner _notifier;
         private readonly ExeRunner _synchronizer;
@@ -171,12 +171,18 @@ namespace SyncIt.Daemon
 
         private void OnNotificationCompleted(string message)
         {
+            _synchronize = true;
+
             if (_settings.Verbose == Verbose.Talkative)
             {
                 LogMessage(message);
             }
 
-            _synchronizer.Do(_settings.SyncCommand);
+            //only one synchronization at the moment
+            if (!_synchronizer.IsRunning)
+            {
+                _synchronizer.Do(_settings.SyncCommand);
+            }
         }
 
         private void OnError(string message)
@@ -189,6 +195,15 @@ namespace SyncIt.Daemon
 
         private void OnSynchronizationCompleted(string message)
         {
+            if (_synchronize)
+            {
+                _synchronize = false;
+                if (!_synchronizer.IsRunning)
+                {
+                    _synchronizer.Do(_settings.SyncCommand);
+                }
+            }
+
             if (!string.IsNullOrWhiteSpace(message))
             {
                 Console.WriteLine(message);
