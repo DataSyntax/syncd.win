@@ -2,10 +2,40 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a8318db4-5e69-4a69-af63-ed9ba2822f64" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="DELETED" beforePath="C:\PROJECTS\Syncd.Win\syncd.win.conf.config" afterPath="" />
+      <change type="MOVED" beforePath="C:\PROJECTS\Syncd.Win\SyncIt.Daemon\App.config" afterPath="$PROJECT_DIR$/SyncD.Daemon/App.config" />
+      <change type="MOVED" beforePath="C:\PROJECTS\Syncd.Win\SyncIt.Daemon\Program.cs" afterPath="$PROJECT_DIR$/SyncD.Daemon/Program.cs" />
+      <change type="MOVED" beforePath="C:\PROJECTS\Syncd.Win\SyncIt.Daemon\Properties\AssemblyInfo.cs" afterPath="$PROJECT_DIR$/SyncD.Daemon/Properties/AssemblyInfo.cs" />
+      <change type="MOVED" beforePath="C:\PROJECTS\Syncd.Win\SyncIt.Daemon\Properties\Resources.Designer.cs" afterPath="$PROJECT_DIR$/SyncD.Daemon/Properties/Resources.Designer.cs" />
+      <change type="MOVED" beforePath="C:\PROJECTS\Syncd.Win\SyncIt.Daemon\Properties\Resources.resx" afterPath="$PROJECT_DIR$/SyncD.Daemon/Properties/Resources.resx" />
+      <change type="MOVED" beforePath="C:\PROJECTS\Syncd.Win\SyncIt.Daemon\Properties\Settings.Designer.cs" afterPath="$PROJECT_DIR$/SyncD.Daemon/Properties/Settings.Designer.cs" />
+      <change type="MOVED" beforePath="C:\PROJECTS\Syncd.Win\SyncIt.Daemon\Properties\Settings.settings" afterPath="$PROJECT_DIR$/SyncD.Daemon/Properties/Settings.settings" />
+      <change type="MOVED" beforePath="C:\PROJECTS\Syncd.Win\SyncIt.Daemon\SyncDaemon.cs" afterPath="$PROJECT_DIR$/SyncD.Daemon/SyncDaemon.cs" />
+      <change type="MOVED" beforePath="C:\PROJECTS\Syncd.Win\SyncIt.Daemon\SyncIt.Daemon.csproj" afterPath="$PROJECT_DIR$/SyncD.Daemon/SyncD.Daemon.csproj" />
+      <change type="MOVED" beforePath="C:\PROJECTS\Syncd.Win\SyncIt.Data\Concrete\Settings.cs" afterPath="$PROJECT_DIR$/SyncD.Data/Concrete/Settings.cs" />
+      <change type="MOVED" beforePath="C:\PROJECTS\Syncd.Win\SyncIt.Data\Enumerations\Arguments.cs" afterPath="$PROJECT_DIR$/SyncD.Data/Enumerations/Arguments.cs" />
+      <change type="MOVED" beforePath="C:\PROJECTS\Syncd.Win\SyncIt.Data\Enumerations\Verbose.cs" afterPath="$PROJECT_DIR$/SyncD.Data/Enumerations/Verbose.cs" />
+      <change type="MOVED" beforePath="C:\PROJECTS\Syncd.Win\SyncIt.Data\Exceptions\InvalidArgumentException.cs" afterPath="$PROJECT_DIR$/SyncD.Data/Exceptions/InvalidArgumentException.cs" />
+      <change type="MOVED" beforePath="C:\PROJECTS\Syncd.Win\SyncIt.Data\Exceptions\SettingNotFoundException.cs" afterPath="$PROJECT_DIR$/SyncD.Data/Exceptions/SettingNotFoundException.cs" />
+      <change type="MOVED" beforePath="C:\PROJECTS\Syncd.Win\SyncIt.Data\Exceptions\TooMuchArgsException.cs" afterPath="$PROJECT_DIR$/SyncD.Data/Exceptions/TooMuchArgsException.cs" />
+      <change type="MOVED" beforePath="C:\PROJECTS\Syncd.Win\SyncIt.Data\Properties\AssemblyInfo.cs" afterPath="$PROJECT_DIR$/SyncD.Data/Properties/AssemblyInfo.cs" />
+      <change type="MOVED" beforePath="C:\PROJECTS\Syncd.Win\SyncIt.Data\SyncIt.Data.csproj" afterPath="$PROJECT_DIR$/SyncD.Data/SyncD.Data.csproj" />
+      <change type="MOVED" beforePath="C:\PROJECTS\Syncd.Win\SyncIt.Infrastructure\ArgumentParser.cs" afterPath="$PROJECT_DIR$/SyncD.Infrastructure/ArgumentParser.cs" />
+      <change type="MOVED" beforePath="C:\PROJECTS\Syncd.Win\SyncIt.Infrastructure\ExeRunner.cs" afterPath="$PROJECT_DIR$/SyncD.Infrastructure/ExeRunner.cs" />
+      <change type="MOVED" beforePath="C:\PROJECTS\Syncd.Win\SyncIt.Infrastructure\Log.cs" afterPath="$PROJECT_DIR$/SyncD.Infrastructure/Log.cs" />
+      <change type="MOVED" beforePath="C:\PROJECTS\Syncd.Win\SyncIt.Infrastructure\Properties\AssemblyInfo.cs" afterPath="$PROJECT_DIR$/SyncD.Infrastructure/Properties/AssemblyInfo.cs" />
+      <change type="MOVED" beforePath="C:\PROJECTS\Syncd.Win\SyncIt.Infrastructure\SettingProvider.cs" afterPath="$PROJECT_DIR$/SyncD.Infrastructure/SettingProvider.cs" />
+      <change type="MOVED" beforePath="C:\PROJECTS\Syncd.Win\SyncIt.Infrastructure\SyncIt.Infrastructure.csproj" afterPath="$PROJECT_DIR$/SyncD.Infrastructure/SyncD.Infrastructure.csproj" />
+      <change type="MOVED" beforePath="C:\PROJECTS\Syncd.Win\SyncIt.sln" afterPath="$PROJECT_DIR$/SyncD.sln" />
+      <change type="MOVED" beforePath="C:\PROJECTS\Syncd.Win\SyncIt\Program.cs" afterPath="$PROJECT_DIR$/SyncD/Program.cs" />
+      <change type="MOVED" beforePath="C:\PROJECTS\Syncd.Win\SyncIt\Properties\AssemblyInfo.cs" afterPath="$PROJECT_DIR$/SyncD/Properties/AssemblyInfo.cs" />
+      <change type="MOVED" beforePath="C:\PROJECTS\Syncd.Win\SyncIt\SyncIt.csproj" afterPath="$PROJECT_DIR$/SyncD/SyncD.csproj" />
+      <change type="MOVED" beforePath="C:\PROJECTS\Syncd.Win\SyncIt\app.config" afterPath="$PROJECT_DIR$/SyncD/app.config" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Syncd.Win.iws" />
     <ignored path=".idea/workspace.xml" />
+    <ignored path=".idea/dataSources.local.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -23,8 +53,28 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
+      <file leaf-file-name="SyncD.csproj" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/SyncD/SyncD.csproj">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="10" column="23" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AssemblyInfo.cs" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/SyncD/Properties/AssemblyInfo.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.20446736">
+              <caret line="7" column="26" selection-start-line="7" selection-start-column="26" selection-end-line="7" selection-end-column="26" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AssemblyInfo.cs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/SyncD.Daemon/Properties/AssemblyInfo.cs">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -37,6 +87,16 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/SyncD.Daemon/Program.cs" />
+        <option value="$PROJECT_DIR$/SyncD.sln" />
+        <option value="$PROJECT_DIR$/SyncD/Properties/AssemblyInfo.cs" />
+        <option value="$PROJECT_DIR$/SyncD/SyncD.csproj" />
+      </list>
+    </option>
   </component>
   <component name="JsBuildToolGruntFileManager" detection-done="true" />
   <component name="JsGulpfileManager">
@@ -75,8 +135,8 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -95,6 +155,52 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Syncd.Win" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Syncd.Win" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SyncD.Daemon" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Syncd.Win" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Syncd.Win" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SyncD.Daemon" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Properties" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Syncd.Win" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Syncd.Win" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SyncD" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -110,6 +216,39 @@
       <recent name="C:\PROJECTS\Syncd.Win" />
     </key>
   </component>
+  <component name="RunManager">
+    <configuration default="true" type="BashConfigurationType" factoryName="Bash">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="INTERPRETER_PATH" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpBehatConfigurationType" factoryName="Behat">
+      <BehatRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <method />
+    </configuration>
+  </component>
   <component name="ShelveChangesManager" show_recycled="false" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -121,26 +260,26 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1066" extended-state="1" />
-    <editor active="false" />
+    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21801706" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32893288" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Mongo Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Mongo Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
@@ -153,7 +292,7 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/syncd.win.conf.config">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -163,8 +302,59 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.53968257">
+          <caret line="28" column="6" selection-start-line="28" selection-start-column="6" selection-end-line="28" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SyncD.sln">
+      <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.23551637">
+          <caret line="11" column="88" selection-start-line="11" selection-start-column="88" selection-end-line="11" selection-end-column="88" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SyncD.Daemon/Program.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.52099884">
+          <caret line="27" column="21" selection-start-line="27" selection-start-column="21" selection-end-line="27" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SyncD/Program.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.09648127">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SyncD.Daemon/Properties/AssemblyInfo.cs">
+      <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SyncD/SyncD.csproj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="23" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SyncD/Properties/AssemblyInfo.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.20446736">
+          <caret line="7" column="26" selection-start-line="7" selection-start-column="26" selection-end-line="7" selection-end-column="26" />
           <folding />
         </state>
       </provider>
