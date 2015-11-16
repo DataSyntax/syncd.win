@@ -45,6 +45,7 @@
     <Compile Include="Log.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SettingProvider.cs" />
+    <Compile Include="SyncDaemon.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SyncD.Data\SyncD.Data.csproj">
