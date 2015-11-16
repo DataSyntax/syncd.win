@@ -4,9 +4,8 @@ using System.IO;
 using System.Linq;
 using SyncD.Data.Concrete;
 using SyncD.Data.Enumerations;
-using SyncD.Infrastructure;
 
-namespace SyncD.Daemon
+namespace SyncD.Infrastructure
 {
     public class SyncDaemon
     {
