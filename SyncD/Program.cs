@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Runtime.InteropServices;
+using System.Management;
 using SyncD.Data.Concrete;
 using SyncD.Data.Enumerations;
 using SyncD.Data.Exceptions;
@@ -61,6 +63,26 @@ namespace SyncD
         }
 
         #region Private methods
+
+        private static void KillAllProcessesSpawnedBy(UInt32 parentProcessId)
+        {
+            var searcher = new ManagementObjectSearcher("SELECT * FROM Win32_Process WHERE ParentProcessId=" + parentProcessId);
+            ManagementObjectCollection collection = searcher.Get();
+            if (collection.Count > 0)
+            {
+                foreach (var item in collection)
+                {
+                    var childProcessId = (UInt32)item["ProcessId"];
+                    if ((int)childProcessId != Process.GetCurrentProcess().Id)
+                    {
+                        KillAllProcessesSpawnedBy(childProcessId);
+
+                        Process childProcess = Process.GetProcessById((int)childProcessId);
+                        childProcess.Kill();
+                    }
+                }
+            }
+        }
 
         private static bool ConsoleCtrlCheck(CtrlTypes ctrlType)
         {
