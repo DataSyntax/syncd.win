@@ -24,6 +24,20 @@ namespace SyncD
                 return;
             }
 
+            //This is synchronous command
+            if (arguments == Arguments.Status)
+            {
+                new SyncDaemon(settings).Status();
+                return;
+            }
+
+            //This is synchronous command
+            if (arguments == Arguments.Run)
+            {
+                new SyncDaemon(settings).Run();
+                return;
+            }
+
             var runner = new ExeRunner(Log, Log);
             runner.Do(string.Format("SyncD.Daemon.exe {0}", args[0]));
 

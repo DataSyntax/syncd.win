@@ -35,16 +35,6 @@ namespace SyncD.Daemon
                         if (daemon.Restart(settings)) { Application.Run(); }
                         break;
                     }
-                case Arguments.Run:
-                    {
-                        daemon.Run();
-                        break;
-                    }
-                case Arguments.Status:
-                    {
-                        daemon.Status();
-                        break;
-                    }
             }
         }
     }
