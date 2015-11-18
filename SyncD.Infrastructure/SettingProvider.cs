@@ -36,7 +36,7 @@ namespace SyncD.Infrastructure
             Verbose verbose;
             Enum.TryParse(GetValueOrEmpty(appSettings, VerboseKey), true, out verbose);
 
-            var settings = new Settings
+            return new Settings
             {
                 LogFileName = logFileName,
                 PidFileName = pidFileName,
@@ -44,11 +44,6 @@ namespace SyncD.Infrastructure
                 SyncCommand = syncCommand,
                 Verbose = verbose
             };
-
-            settings.WatchCommand = string.Format("{0} --exclude {1}|{2}|syncd.conf", settings.WatchCommand, settings.LogFileName, settings.PidFileName);
-            settings.SyncCommand = string.Format("{0} --exclude {1} --exclude {2} --exclude syncd.conf", settings.SyncCommand, settings.LogFileName, settings.PidFileName);
-
-            return settings;
         }
 
         #region Private methods
