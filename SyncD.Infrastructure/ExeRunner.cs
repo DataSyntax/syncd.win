@@ -73,14 +73,6 @@ namespace SyncD.Infrastructure
             return _process.Id;
         }
 
-        public void Stop()
-        {
-            _process.StandardInput.Close();
-            _process.Close();
-
-            _isRunning = false;
-        }
-
         public void WaitForExit(int milliseconds = 0)
         {
             if (milliseconds == 0)
