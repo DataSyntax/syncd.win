@@ -49,6 +49,10 @@
     <None Include="app.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\De.Thekid.INotify\De.Thekid.INotify.csproj">
+      <Project>{7984F361-67B3-4279-A6F8-147D32A632A0}</Project>
+      <Name>De.Thekid.INotify</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SyncD.Daemon\SyncD.Daemon.csproj">
       <Project>{46a0ce3c-e641-4d04-acaa-6492d353e85c}</Project>
       <Name>SyncD.Daemon</Name>
