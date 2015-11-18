@@ -201,6 +201,8 @@ namespace SyncD.Infrastructure
             if (_synchronize)
             {
                 _synchronize = false;
+                _synchronizer.WaitForExit(1000); // wait until previous synchronizer finished its work
+
                 if (!_synchronizer.IsRunning)
                 {
                     _synchronizer.Do(_settings.SyncCommand);
