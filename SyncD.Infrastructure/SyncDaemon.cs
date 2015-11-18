@@ -91,8 +91,11 @@ namespace SyncD.Infrastructure
 
         public void Status()
         {
-            Console.WriteLine(IsRunning()
-                                        ? "syncd is running"
+            int processId;
+            var isRunning = IsRunning(out processId);
+
+            Console.WriteLine(isRunning
+                                        ? string.Format("syncd is running: PID - {0}", processId)
                                         : "syncd is stopped");
         }
 
