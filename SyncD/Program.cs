@@ -64,7 +64,7 @@ namespace SyncD
 
         private static bool ConsoleCtrlCheck(CtrlTypes ctrlType)
         {
-            ProcessHelper.KillAllProcessesSpawnedBy((UInt32)Process.GetCurrentProcess().Id);
+            ProcessHelper.KillAllProcessesSpawnedBy(Process.GetCurrentProcess().Id);
             return false;
         }
 

@@ -56,8 +56,10 @@ namespace SyncD.Infrastructure
             if (IsRunning(out processId))
             {
                 var process = Process.GetProcessById(processId);
+                ProcessHelper.KillAllProcessesSpawnedBy(process.Id);
                 process.Kill();
                 process.WaitForExit();
+
                 UnlockFolder();
 
                 Console.WriteLine(StopMessage);
