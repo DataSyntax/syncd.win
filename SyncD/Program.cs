@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Runtime.InteropServices;
 using SyncD.Data.Concrete;
 using SyncD.Data.Enumerations;
@@ -13,7 +14,6 @@ namespace SyncD
 
         [DllImport("Kernel32")]
         public static extern bool SetConsoleCtrlHandler(HandlerRoutine handler, bool add);
-
         public delegate bool HandlerRoutine(CtrlTypes ctrlType);
 
         static void Main(string[] args)
@@ -64,6 +64,7 @@ namespace SyncD
 
         private static bool ConsoleCtrlCheck(CtrlTypes ctrlType)
         {
+            ProcessHelper.KillAllProcessesSpawnedBy((UInt32)Process.GetCurrentProcess().Id);
             return false;
         }
 
