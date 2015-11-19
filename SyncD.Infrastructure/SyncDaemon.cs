@@ -23,8 +23,8 @@ namespace SyncD.Infrastructure
         {
             _settings = settings;
 
-            _notifier = new ExeRunner(OnNotificationCompleted, OnError);
-            _synchronizer = new ExeRunner(OnSynchronizationCompleted, OnError);
+            _notifier = new ExeRunner(OnNotificationMessageReceived, OnError);
+            _synchronizer = new ExeRunner(OnSynchronizationMessageReceived, OnError);
         }
 
         #region Commands
@@ -172,7 +172,7 @@ namespace SyncD.Infrastructure
             return false;
         }
 
-        private void OnNotificationCompleted(string message)
+        private void OnNotificationMessageReceived(string message)
         {
             _synchronize = true;
 
@@ -196,7 +196,7 @@ namespace SyncD.Infrastructure
             }
         }
 
-        private void OnSynchronizationCompleted(string message)
+        private void OnSynchronizationMessageReceived(string message)
         {
             if (_synchronize)
             {

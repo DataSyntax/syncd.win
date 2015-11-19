@@ -13,15 +13,15 @@ namespace SyncD.Infrastructure
         private Queue<string> _responseQueue;
         private ManualResetEvent _responseEvent;
 
-        private readonly Action<string> _onError;
-        private readonly Action<string> _onSuccess;
+        private readonly Action<string> _onErrorOccurred;
+        private readonly Action<string> _onMessageReceived;
 
         public bool IsRunning { get { return _isRunning; } }
 
-        public ExeRunner(Action<string> onSuccess, Action<string> onError)
+        public ExeRunner(Action<string> onMessageReceived, Action<string> onErrorOccurred)
         {
-            _onSuccess = onSuccess;
-            _onError = onError;
+            _onMessageReceived = onMessageReceived;
+            _onErrorOccurred = onErrorOccurred;
         }
 
         public int Do(string command)
@@ -93,9 +93,9 @@ namespace SyncD.Infrastructure
             {
                 lock (_responseQueue)
                 {
-                    if (_onSuccess != null)
+                    if (_onMessageReceived != null)
                     {
-                        _onSuccess(dataReceivedEventArgs.Data);
+                        _onMessageReceived(dataReceivedEventArgs.Data);
                     }
 
                     _responseQueue.Enqueue(dataReceivedEventArgs.Data);
@@ -114,9 +114,9 @@ namespace SyncD.Infrastructure
             {
                 lock (_responseQueue)
                 {
-                    if (_onError != null)
+                    if (_onErrorOccurred != null)
                     {
-                        _onError(dataReceivedEventArgs.Data);
+                        _onErrorOccurred(dataReceivedEventArgs.Data);
                     }
 
                     _responseQueue.Enqueue(dataReceivedEventArgs.Data);
