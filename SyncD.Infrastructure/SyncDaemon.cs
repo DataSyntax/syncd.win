@@ -24,7 +24,7 @@ namespace SyncD.Infrastructure
             _settings = settings;
 
             _notifier = new ExeRunner(OnNotificationMessageReceived, OnError);
-            _synchronizer = new ExeRunner(OnSynchronizationMessageReceived, OnError);
+            _synchronizer = new ExeRunner(OnSynchronizationMessageReceived, OnError, OnSynchronizationFinished);
         }
 
         #region Commands
@@ -198,17 +198,6 @@ namespace SyncD.Infrastructure
 
         private void OnSynchronizationMessageReceived(string message)
         {
-            if (_synchronize)
-            {
-                _synchronize = false;
-                _synchronizer.WaitForExit(1000); // wait until previous synchronizer finished its work
-
-                if (!_synchronizer.IsRunning)
-                {
-                    _synchronizer.Do(_settings.SyncCommand);
-                }
-            }
-
             if (!string.IsNullOrWhiteSpace(message))
             {
                 Console.WriteLine(message);
@@ -216,6 +205,15 @@ namespace SyncD.Infrastructure
                 {
                     LogMessage(message);
                 }
+            }
+        }
+
+        private void OnSynchronizationFinished()
+        {
+            if (_synchronize)
+            {
+                _synchronize = false;
+                _synchronizer.Do(_settings.SyncCommand);
             }
         }
 

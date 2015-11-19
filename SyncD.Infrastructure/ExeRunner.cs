@@ -15,6 +15,7 @@ namespace SyncD.Infrastructure
 
         private readonly Action<string> _onErrorOccurred;
         private readonly Action<string> _onMessageReceived;
+        private readonly Action _onExit;
 
         public bool IsRunning { get { return _isRunning; } }
 
@@ -22,6 +23,12 @@ namespace SyncD.Infrastructure
         {
             _onMessageReceived = onMessageReceived;
             _onErrorOccurred = onErrorOccurred;
+        }
+
+        public ExeRunner(Action<string> onMessageReceived, Action<string> onErrorOccurred, Action onExit)
+            : this(onMessageReceived, onErrorOccurred)
+        {
+            _onExit = onExit;
         }
 
         public int Do(string command)
@@ -63,7 +70,14 @@ namespace SyncD.Infrastructure
 
             _process.OutputDataReceived += OutDataReceived;
             _process.ErrorDataReceived += ErrorDataReceived;
-            _process.Exited += (sender, args) => { _isRunning = false; };
+            _process.Exited += (sender, args) =>
+            {
+                _isRunning = false;
+                if (_onExit != null)
+                {
+                    _onExit();
+                }
+            };
 
             _process.BeginErrorReadLine();
             _process.BeginOutputReadLine();
