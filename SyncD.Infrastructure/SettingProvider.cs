@@ -24,7 +24,8 @@ namespace SyncD.Infrastructure
             }
 
             var appSettings = File.ReadAllLines("syncd.conf")
-                                  .Select(x => x.Split(new Char[]{'='}, 2))
+                                  .Where(s => !string.IsNullOrWhiteSpace(s) && !s.StartsWith("#")) // don't include comments
+                                  .Select(x => x.Split(new[] { '=' }, 2))
                                   .Where(x => x.Length > 1)
                                   .ToDictionary(x => x[0].Trim().ToUpper(), x => x[1]);
 
