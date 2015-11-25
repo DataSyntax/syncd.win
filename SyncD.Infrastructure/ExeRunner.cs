@@ -31,7 +31,7 @@ namespace SyncD.Infrastructure
             _onExit = onExit;
         }
 
-        public int Do(string command)
+        public Process Do(string command)
         {
             _responseQueue = new Queue<string>();
             _responseEvent = new ManualResetEvent(false);
@@ -62,6 +62,7 @@ namespace SyncD.Infrastructure
                     RedirectStandardOutput = true,
                     CreateNoWindow = true,
                     UseShellExecute = false,
+                    WindowStyle = ProcessWindowStyle.Hidden,
                     ErrorDialog = false
                 }
             };
@@ -84,7 +85,7 @@ namespace SyncD.Infrastructure
 
             _isRunning = true;
 
-            return _process.Id;
+            return _process;
         }
 
         public void WaitForExit(int milliseconds = 0)

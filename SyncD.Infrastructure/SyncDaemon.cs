@@ -1,9 +1,15 @@
 ﻿using System;
+using System.Collections;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Management;
+using System.Runtime.InteropServices;
+using System.Text;
+using System.Threading;
 using SyncD.Data.Concrete;
 using SyncD.Data.Enumerations;
+
 
 namespace SyncD.Infrastructure
 {
@@ -18,6 +24,9 @@ namespace SyncD.Infrastructure
         private Settings _settings;
         private readonly ExeRunner _notifier;
         private readonly ExeRunner _synchronizer;
+
+        private Process _running;
+
 
         public SyncDaemon(Settings settings)
         {
@@ -81,9 +90,19 @@ namespace SyncD.Infrastructure
             return Start();
         }
 
+
+
+        public void Console_CancelKeyPress(object sender, ConsoleCancelEventArgs e)
+        {
+            _running.Kill();
+            e.Cancel = false;
+        }
+
         public void Run()
         {
-            _synchronizer.Do(_settings.SyncCommand);
+            //SetConsoleCtrlHandler(new ConsoleCtrlDelegate(ConsoleCtrlCheck), true);
+            Console.CancelKeyPress += new ConsoleCancelEventHandler(Console_CancelKeyPress);
+            _running = _synchronizer.Do(_settings.SyncCommand);
             _synchronizer.WaitForExit();
             Console.WriteLine(SynchronizationFinishedMessage);
             LogMessage(SynchronizationFinishedMessage);

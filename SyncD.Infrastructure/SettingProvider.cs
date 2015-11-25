@@ -12,7 +12,7 @@ namespace SyncD.Infrastructure
     {
         private const string LogFileNameKey = "LOGFILE";
         private const string PidFileNameKey = "PIDFILE";
-        private const string WatchCommandKey = "WATCHCOMMAND";
+        private const string WatchCommandKey = "WATCHCOMMAND_WIN";
         private const string SyncCommandKey = "SYNCCOMMAND";
         private const string VerboseKey = "VERBOSE";
 
@@ -24,7 +24,7 @@ namespace SyncD.Infrastructure
             }
 
             var appSettings = File.ReadAllLines("syncd.conf")
-                                  .Select(x => x.Split('='))
+                                  .Select(x => x.Split(new Char[]{'='}, 2))
                                   .Where(x => x.Length > 1)
                                   .ToDictionary(x => x[0].Trim().ToUpper(), x => x[1]);
 
