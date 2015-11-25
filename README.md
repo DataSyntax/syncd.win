@@ -14,10 +14,12 @@ Syncd has a flexible configuration file (syncd.conf) where you can configure wha
 and intuitive interface.
 
 `syncd start`  - start syncd daemon for current folder
+
 `syncd stop`   - stop syncd daemon
+
 `syncd status` - tell if syncd is already monitoring the folder, and if yes PID of the process
+
 `syncd run`    - one time run of the synchronization command rsync
 
-Configuration file (syncd.conf) must exist inside folder in all cases.
-Format of the file is self-explanatory.
+Configuration file (syncd.conf) must exist inside folder in all cases. Format of the file is self-explanatory.
 
