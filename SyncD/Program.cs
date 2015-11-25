@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Diagnostics;
+using System.Runtime.InteropServices;
 using SyncD.Data.Concrete;
 using SyncD.Data.Enumerations;
 using SyncD.Data.Exceptions;
@@ -9,6 +11,10 @@ namespace SyncD
     class Program
     {
         private const string HelpMessage = "Use -? or --help for getting information about usage of syncd";
+        
+        [DllImport("Kernel32")]
+        public static extern bool SetConsoleCtrlHandler(HandlerRoutine handler, bool add);
+        public delegate bool HandlerRoutine(CtrlTypes ctrlType);
 
         static void Main(string[] args)
         {
@@ -23,6 +29,8 @@ namespace SyncD
             {
                 return;
             }
+
+            SetConsoleCtrlHandler(ConsoleCtrlCheck, true);
 
             //This is synchronous command
             if (arguments == Arguments.Status)
@@ -53,6 +61,12 @@ namespace SyncD
         }
 
         #region Private methods
+
+        private static bool ConsoleCtrlCheck(CtrlTypes ctrlType)
+        {
+            ProcessHelper.KillAllProcessesSpawnedBy(Process.GetCurrentProcess().Id);
+            return false;
+        }
 
         private static void Log(string message)
         {
@@ -111,5 +125,14 @@ namespace SyncD
         }
 
         #endregion
+    }
+
+    public enum CtrlTypes
+    {
+        CtrlCEvent = 0,
+        CtrlBreakEvent,
+        CtrlCloseEvent,
+        CtrlLogoffEvent = 5,
+        CtrlShutdownEvent
     }
 }
