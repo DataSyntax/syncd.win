@@ -52,7 +52,7 @@ namespace SyncD
             if (arguments == Arguments.Start
              || arguments == Arguments.Restart)
             {
-                runner.WaitForExit(1000);
+                runner.WaitForExit(150);
             }
             else
             {
