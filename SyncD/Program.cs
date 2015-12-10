@@ -11,7 +11,7 @@ namespace SyncD
     class Program
     {
         private const string HelpMessage = "Use -? or --help for getting information about usage of syncd";
-        
+
         [DllImport("Kernel32")]
         public static extern bool SetConsoleCtrlHandler(HandlerRoutine handler, bool add);
         public delegate bool HandlerRoutine(CtrlTypes ctrlType);
@@ -49,14 +49,11 @@ namespace SyncD
             var runner = new ExeRunner(Log, Log);
             runner.Do(string.Format("SyncD.Daemon.exe {0}", args[0]));
 
-            if (arguments == Arguments.Start
-             || arguments == Arguments.Restart)
+            switch (arguments)
             {
-                runner.WaitForExit(150);
-            }
-            else
-            {
-                runner.WaitForExit();
+                case Arguments.Start: { runner.WaitForExit(150); break; }
+                case Arguments.Restart: { runner.WaitForExit(1000); break; }
+                default: { runner.WaitForExit(); break; }
             }
         }
 
