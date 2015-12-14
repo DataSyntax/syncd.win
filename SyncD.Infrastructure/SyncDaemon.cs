@@ -213,6 +213,8 @@ namespace SyncD.Infrastructure
         {
             if (_synchronize)
             {
+                _synchronizer.WaitForExit();
+                
                 _synchronize = false;
                 _synchronizer.Do(_settings.SyncCommand);
             }
