@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Threading;
 
 namespace SyncD.Infrastructure
 {
@@ -10,8 +8,6 @@ namespace SyncD.Infrastructure
     {
         private bool _isRunning;
         private Process _process;
-        private Queue<string> _responseQueue;
-        private ManualResetEvent _responseEvent;
 
         private readonly Action<string> _onErrorOccurred;
         private readonly Action<string> _onMessageReceived;
@@ -33,9 +29,6 @@ namespace SyncD.Infrastructure
 
         public Process Do(string command)
         {
-            _responseQueue = new Queue<string>();
-            _responseEvent = new ManualResetEvent(false);
-
             string fileName;
             var arguments = string.Empty;
 
@@ -69,8 +62,22 @@ namespace SyncD.Infrastructure
 
             _process.Start();
 
-            _process.OutputDataReceived += OutDataReceived;
-            _process.ErrorDataReceived += ErrorDataReceived;
+            _process.OutputDataReceived += (sender, args) =>
+            {
+                if (_onMessageReceived != null)
+                {
+                    _onMessageReceived(args.Data);
+                }
+            };
+
+            _process.ErrorDataReceived += (sender, args) =>
+            {
+                if (_onErrorOccurred != null)
+                {
+                    _onErrorOccurred(args.Data);
+                }
+            };
+
             _process.Exited += (sender, args) =>
             {
                 _isRunning = false;
@@ -99,51 +106,5 @@ namespace SyncD.Infrastructure
                 _process.WaitForExit(milliseconds);
             }
         }
-
-        #region Private Methods
-
-        private void OutDataReceived(object sender, DataReceivedEventArgs dataReceivedEventArgs)
-        {
-            try
-            {
-                lock (_responseQueue)
-                {
-                    if (_onMessageReceived != null)
-                    {
-                        _onMessageReceived(dataReceivedEventArgs.Data);
-                    }
-
-                    _responseQueue.Enqueue(dataReceivedEventArgs.Data);
-                    _responseEvent.Set();
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Data);
-            }
-        }
-
-        private void ErrorDataReceived(object sender, DataReceivedEventArgs dataReceivedEventArgs)
-        {
-            try
-            {
-                lock (_responseQueue)
-                {
-                    if (_onErrorOccurred != null)
-                    {
-                        _onErrorOccurred(dataReceivedEventArgs.Data);
-                    }
-
-                    _responseQueue.Enqueue(dataReceivedEventArgs.Data);
-                    _responseEvent.Set();
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Data);
-            }
-        }
-
-        #endregion
     }
 }
