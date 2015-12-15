@@ -10,6 +10,8 @@ namespace SyncD.Infrastructure
     public class SyncDaemon
     {
         private bool _needSynchronization = false;
+        private bool _isSynchronizationStarted = false;
+
         private const string StartMessage = "syncd has started watching current directory";
         private const string StopMessage = "syncd has stopped watching current directory";
         private const string SynchronizationFinishedMessage = "syncd has finished synchronization of files";
@@ -183,8 +185,9 @@ namespace SyncD.Infrastructure
             }
 
             //only one synchronization at the moment
-            if (!_synchronizer.IsRunning)
+            if (!_isSynchronizationStarted)
             {
+                _isSynchronizationStarted = true;
                 _synchronizer.Do(_settings.SyncCommand);
             }
         }
@@ -213,10 +216,14 @@ namespace SyncD.Infrastructure
         {
             if (_needSynchronization)
             {
-                _synchronizer.WaitForExit();
-                
                 _needSynchronization = false;
+
+                _synchronizer.WaitForExit();
                 _synchronizer.Do(_settings.SyncCommand);
+            }
+            else
+            {
+                _isSynchronizationStarted = false;
             }
         }
 
