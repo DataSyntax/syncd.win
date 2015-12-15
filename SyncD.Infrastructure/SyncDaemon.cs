@@ -9,7 +9,7 @@ namespace SyncD.Infrastructure
 {
     public class SyncDaemon
     {
-        private bool _synchronize = false;
+        private bool _needSynchronization = false;
         private const string StartMessage = "syncd has started watching current directory";
         private const string StopMessage = "syncd has stopped watching current directory";
         private const string SynchronizationFinishedMessage = "syncd has finished synchronization of files";
@@ -175,7 +175,7 @@ namespace SyncD.Infrastructure
 
         private void OnNotificationMessageReceived(string message)
         {
-            _synchronize = true;
+            _needSynchronization = true;
 
             if (_settings.Verbose == Verbose.Talkative)
             {
@@ -211,11 +211,11 @@ namespace SyncD.Infrastructure
 
         private void OnSynchronizationFinished()
         {
-            if (_synchronize)
+            if (_needSynchronization)
             {
                 _synchronizer.WaitForExit();
                 
-                _synchronize = false;
+                _needSynchronization = false;
                 _synchronizer.Do(_settings.SyncCommand);
             }
         }
