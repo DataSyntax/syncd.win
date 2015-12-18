@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using SyncD.Data.Concrete;
 using SyncD.Data.Enumerations;
 
@@ -10,12 +11,12 @@ namespace SyncD.Infrastructure
     public class SyncDaemon
     {
         private bool _needSynchronization = false;
-        private bool _isSynchronizationStarted = false;
-
+        private const int ThreeSeconds = 3000;
         private const string StartMessage = "syncd has started watching current directory";
         private const string StopMessage = "syncd has stopped watching current directory";
         private const string SynchronizationFinishedMessage = "syncd has finished synchronization of files";
 
+        private Timer _synchronizationTimer;
         private FileStream _locker;
         private Settings _settings;
         private readonly ExeRunner _notifier;
@@ -26,7 +27,9 @@ namespace SyncD.Infrastructure
             _settings = settings;
 
             _notifier = new ExeRunner(OnNotificationMessageReceived, OnError);
-            _synchronizer = new ExeRunner(OnSynchronizationMessageReceived, OnError, OnSynchronizationFinished);
+            _synchronizer = new ExeRunner(OnSynchronizationMessageReceived, OnError);
+
+            StartSynchronizationJob();
         }
 
         #region Commands
@@ -183,13 +186,6 @@ namespace SyncD.Infrastructure
             {
                 LogMessage(message);
             }
-
-            //only one synchronization at the moment
-            if (!_isSynchronizationStarted)
-            {
-                _isSynchronizationStarted = true;
-                _synchronizer.Do(_settings.SyncCommand);
-            }
         }
 
         private void OnError(string message)
@@ -212,18 +208,19 @@ namespace SyncD.Infrastructure
             }
         }
 
-        private void OnSynchronizationFinished()
+        private void StartSynchronizationJob()
         {
-            if (_needSynchronization)
+            var autoEvent = new AutoResetEvent(false);
+            TimerCallback callback = Synchronize;
+            _synchronizationTimer = new Timer(callback, autoEvent, 0, ThreeSeconds);
+        }
+
+        private void Synchronize(object stateInfo)
+        {
+            if (_needSynchronization && !_synchronizer.IsRunning)
             {
                 _needSynchronization = false;
-
-                _synchronizer.WaitForExit();
                 _synchronizer.Do(_settings.SyncCommand);
-            }
-            else
-            {
-                _isSynchronizationStarted = false;
             }
         }
 
