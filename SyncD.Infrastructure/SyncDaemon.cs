@@ -113,10 +113,13 @@ namespace SyncD.Infrastructure
         {
             try
             {
+                var processId = Process.GetCurrentProcess().Id.ToString();
                 _locker = new FileStream(_settings.PidFileName, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.Read);
+                _locker.Seek(0, SeekOrigin.Begin);
+                _locker.SetLength(processId.Length);
 
                 var streamWriter = new StreamWriter(_locker);
-                streamWriter.Write(Process.GetCurrentProcess().Id.ToString());
+                streamWriter.Write(processId);
                 streamWriter.Flush();
 
                 return true;
